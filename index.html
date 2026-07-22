@@ -211,7 +211,7 @@
       <div class="feature-card">
         <div class="feature-icon">🔒</div>
         <h3>Privacy First</h3>
-        <p>All data stays on your device. No accounts, no tracking, no ads.</p>
+        <p>Your journal is encrypted on your device, with optional recovery through your private iCloud backup. No accounts, tracking, or ads.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📤</div>
@@ -240,8 +240,8 @@
         <li><strong>How do I create a memory?</strong> — Tap the + button on the Memories screen and fill in your trip details.</li>
         <li><strong>How do I share a memory?</strong> — Open a memory and tap the share icon in the top right corner.</li>
         <li><strong>How do I restore my purchase?</strong> — Go to Settings → Upgrade to Premium → Restore Purchase.</li>
-        <li><strong>Can I use the app offline?</strong> — Yes! All data is stored locally on your device. No internet required.</li>
-        <li><strong>How do I delete my data?</strong> — Delete the app from your device. All data is stored locally and will be removed.</li>
+        <li><strong>Can I use the app offline?</strong> — Yes. Your journal remains available offline. Maps, weather, purchases, and iCloud Backup need a network connection.</li>
+        <li><strong>How do I delete my data?</strong> — Delete the app to remove local data. If iCloud Backup is enabled, turn it off and choose Delete iCloud Backup in Settings to remove the recovery copy too.</li>
         <li><strong>How do I set a cover photo?</strong> — In the memory edit screen, tap any photo to set it as the cover.</li>
       </ul>
     </div>
@@ -249,22 +249,22 @@
     <!-- Privacy Policy -->
     <div class="card" id="privacy">
       <h2>Privacy Policy</h2>
-      <p><strong>Last updated:</strong> July 4, 2026</p>
+      <p><strong>Last updated:</strong> July 22, 2026</p>
 
       <h3>Overview</h3>
-      <p>Memora Trips is a privacy-first, offline-first application. Your data stays on your device.</p>
+      <p>Memora Trips is a privacy-first, offline-first application. Your journal is encrypted on your device. Optional features use protected device data only with your permission, and optional iCloud Backup stores a recovery copy in your private iCloud container.</p>
 
       <h3>Data Collection</h3>
-      <p>We do <strong>not</strong> collect, store, or transmit any personal data to external servers. Specifically:</p>
+      <p>Memora does not operate account, analytics, advertising, or tracking servers. The app contacts service providers only when needed for a feature you use. Specifically:</p>
       <ul>
         <li>No user accounts or registration required</li>
         <li>No analytics or tracking</li>
         <li>No advertising</li>
-        <li>No data shared with third parties</li>
+        <li>No sale of personal data</li>
       </ul>
 
       <h3>Data Stored on Your Device</h3>
-      <p>The app stores the following data locally on your device only:</p>
+      <p>The app stores the following data in its encrypted local database:</p>
       <ul>
         <li>Trip memories (titles, dates, locations, notes, ratings)</li>
         <li>Photos you attach to memories</li>
@@ -272,23 +272,34 @@
         <li>App preferences and settings</li>
       </ul>
 
+      <h3>iCloud Backup</h3>
+      <p>If you enable iCloud Backup, Memora stores a recovery copy of your memories, plans, photos, ratings, notes, activity summaries, and settings in the app's private iCloud container. This copy is controlled through your Apple ID and is not available to Cerberus Software Technologies. You can disable backup, keep the existing copy, or delete the iCloud backup from Memora Settings.</p>
+
+      <h3>Calendar Data</h3>
+      <p>Calendar access is optional and is requested only after you choose <strong>Scan My Calendar</strong>. Memora reads event titles, dates, locations, and notes to identify possible trips. Scanning and matching happen on your device. Scanned events are not sent to our servers, Memora never changes your calendar, and Memora does not access or change reminders.</p>
+      <p>No suggestions are selected automatically. Only trips you explicitly choose are saved to Memora. Saved trip details may be included in your private iCloud backup when backup is enabled.</p>
+
+      <h3>Apple Health and Activity</h3>
+      <p>With your permission, Memora reads step counts and cycling distance for your trip dates. Memora does not write to Apple Health. Activity summaries saved with a memory remain local unless you enable iCloud Backup or explicitly export or share them.</p>
+
       <h3>Location Data</h3>
       <p>The app may request location permission to:</p>
       <ul>
         <li>Tag your current location when creating a memory</li>
         <li>Detect arrival at planned trip destinations (using region monitoring)</li>
       </ul>
-      <p>Location data is stored locally on your device and is never transmitted to any server.</p>
+      <p>Saved memory and plan locations are stored in the encrypted local database and may be included in your private iCloud backup. Map, geocoding, and weather providers may receive the coordinates or search text needed to answer a request.</p>
 
       <h3>Third-Party Services</h3>
       <ul>
         <li><strong>Google Maps / Places API</strong> — Used for location search and map display. Subject to <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</li>
-        <li><strong>Open-Meteo</strong> — Used for weather data. No personal data is sent; only coordinates and dates.</li>
+        <li><strong>Open-Meteo</strong> — Receives the coordinates and dates needed to return weather information.</li>
+        <li><strong>Apple iCloud</strong> — Stores an optional recovery copy in the app's private iCloud container when you enable iCloud Backup. Subject to <a href="https://www.apple.com/privacy/">Apple's Privacy Policy</a>.</li>
         <li><strong>Apple StoreKit / Google Play Billing</strong> — Used for in-app purchases. Subject to <a href="https://www.apple.com/privacy/">Apple's</a> and <a href="https://policies.google.com/privacy">Google's</a> privacy policies.</li>
       </ul>
 
       <h3>Data Deletion</h3>
-      <p>To delete all your data, simply delete the app from your device. Since all data is stored locally, uninstalling the app permanently removes all data.</p>
+      <p>Deleting the app removes its local data. If iCloud Backup is enabled, the private recovery copy can remain after uninstalling so you can restore it later. To remove it before uninstalling, go to Memora Settings, turn off iCloud Backup, and choose <strong>Delete iCloud Backup</strong>. You can also manage stored app data through your Apple iCloud storage controls.</p>
 
       <h3>Children's Privacy</h3>
       <p>We do not knowingly collect data from children under 13. The app does not require any personal information.</p>
@@ -312,7 +323,7 @@
       <p>The app offers a one-time premium purchase to unlock unlimited features. All purchases are processed through Apple's App Store or Google Play and are subject to their respective terms. Refunds are handled by Apple/Google.</p>
 
       <h3>User Content</h3>
-      <p>You retain ownership of all content (photos, notes, memories) you create in the app. Your content is stored locally on your device only.</p>
+      <p>You retain ownership of all content (photos, notes, memories) you create in the app. Your content is stored locally and, when you enable iCloud Backup, in your private iCloud container.</p>
 
       <h3>Disclaimer</h3>
       <p>The app is provided "as is" without warranties of any kind. We are not responsible for data loss due to device failure, app deletion, or other circumstances.</p>
