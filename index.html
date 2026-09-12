@@ -764,6 +764,118 @@
         font-size: 13px !important;
       }
 
+      .privacy-intro {
+        max-width: 650px;
+        margin-top: 18px;
+        font-size: 17px !important;
+      }
+
+      .privacy-apps {
+        margin: 30px 0 34px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .privacy-app {
+        width: 100%;
+        padding: 18px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 14px;
+        background: var(--cream);
+        border: 1px solid var(--sand);
+        border-radius: 18px;
+        color: var(--ink);
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+        transition:
+          border-color 160ms ease,
+          box-shadow 160ms ease,
+          transform 160ms ease;
+      }
+
+      .privacy-app:hover,
+      .privacy-app:focus-visible {
+        border-color: var(--terracotta);
+        box-shadow: 0 8px 22px rgba(74, 59, 42, 0.1);
+        outline: none;
+        transform: translateY(-1px);
+      }
+
+      .privacy-app[aria-selected="true"] {
+        background: var(--terracotta-tint);
+        border-color: var(--terracotta);
+        box-shadow: inset 0 0 0 1px var(--terracotta);
+      }
+
+      .privacy-app img {
+        width: 54px;
+        height: 54px;
+        border-radius: 15px;
+        box-shadow: 0 5px 14px var(--shadow);
+      }
+
+      .privacy-app-copy strong,
+      .privacy-app-copy span {
+        display: block;
+      }
+
+      .privacy-app-copy strong {
+        font-family: var(--display);
+        font-size: 17px;
+      }
+
+      .privacy-app-copy span {
+        margin-top: 2px;
+        color: var(--taupe);
+        font-size: 12px;
+      }
+
+      .privacy-app-check {
+        width: 26px;
+        height: 26px;
+        display: grid;
+        place-items: center;
+        background: var(--paper);
+        border: 1px solid var(--sand);
+        border-radius: 50%;
+        color: transparent;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .privacy-app[aria-selected="true"] .privacy-app-check {
+        background: var(--terracotta);
+        border-color: var(--terracotta);
+        color: white;
+      }
+
+      .privacy-policy {
+        padding-top: 4px;
+      }
+
+      .privacy-policy[hidden] {
+        display: none;
+      }
+
+      .privacy-policy-header {
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--sand);
+      }
+
+      .privacy-policy-header h3 {
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(26px, 4vw, 34px);
+      }
+
+      .privacy-policy-header .policy-date {
+        margin-bottom: 0;
+      }
+
       .support-intro {
         max-width: 610px;
         margin-top: 18px;
@@ -945,7 +1057,8 @@
         }
 
         .feature-grid,
-        .faq-list {
+        .faq-list,
+        .privacy-apps {
           grid-template-columns: 1fr;
         }
 
@@ -1030,7 +1143,7 @@
           <li><a href="#story">Our approach</a></li>
           <li><a href="#support">Support</a></li>
           <li><a href="#terms">Terms</a></li>
-          <li><a class="nav-cta" href="#privacy">Privacy</a></li>
+          <li><a class="nav-cta" href="#privacy">Privacy Center</a></li>
         </ul>
       </div>
     </nav>
@@ -1283,153 +1396,357 @@
         </section>
 
         <section class="info-card anchor-section" id="privacy">
-          <p class="eyebrow">Clear, respectful, and private by design</p>
-          <h2>Privacy Policy</h2>
-          <p class="policy-date">
-            <strong>Last updated:</strong> July 25, 2026
+          <p class="eyebrow">One privacy center, clear choices</p>
+          <h2>Privacy Center</h2>
+          <p class="privacy-intro">
+            Choose the app you use to read the policy that applies to your data.
           </p>
 
-          <h3>Overview</h3>
-          <p>
-            Memora Trips is a privacy-first, offline-first application. Your
-            journal is encrypted on your device. Optional features use protected
-            device data only with your permission, and optional iCloud Backup
-            stores a recovery copy in your private iCloud container.
-          </p>
+          <div class="privacy-apps" role="tablist" aria-label="Choose an app">
+            <button
+              class="privacy-app"
+              id="privacy-tab-memora"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="privacy-policy-memora"
+              data-policy="memora"
+            >
+              <img src="assets/memora.png" alt="" />
+              <span class="privacy-app-copy">
+                <strong>Memora Trips</strong>
+                <span>Travel journal, planning, photos, and trip books</span>
+              </span>
+              <span class="privacy-app-check" aria-hidden="true">✓</span>
+            </button>
+            <button
+              class="privacy-app"
+              id="privacy-tab-a-la-mesa"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="privacy-policy-a-la-mesa"
+              data-policy="a-la-mesa"
+              tabindex="-1"
+            >
+              <img src="assets/a-la-mesa.png" alt="" />
+              <span class="privacy-app-copy">
+                <strong>A La Mesa</strong>
+                <span>Private, local-first multiplayer card games</span>
+              </span>
+              <span class="privacy-app-check" aria-hidden="true">✓</span>
+            </button>
+          </div>
 
-          <h3>On-device AI and Photo Analysis</h3>
-          <p>
-            When creating a Trip Book, Memora may use Apple Intelligence and
-            Apple Vision directly on your device to analyze photo composition
-            and organize the scrapbook layout. Photos, captions, prompts, and
-            generated results are not sent to Memora servers or third-party AI
-            services and are not used for model training. A non-AI layout is
-            used when Apple Intelligence is unavailable.
-          </p>
+          <div
+            class="privacy-policy"
+            id="privacy-policy-memora"
+            role="tabpanel"
+            aria-labelledby="privacy-tab-memora"
+          >
+            <div class="privacy-policy-header">
+              <h3>Memora Trips Privacy Policy</h3>
+              <p class="policy-date">
+                <strong>Last updated:</strong> July 25, 2026
+              </p>
+            </div>
+            <h3>Overview</h3>
+            <p>
+              Memora Trips is a privacy-first, offline-first application. Your
+              journal is encrypted on your device. Optional features use
+              protected device data only with your permission, and optional
+              iCloud Backup stores a recovery copy in your private iCloud
+              container.
+            </p>
 
-          <h3>Data Collection</h3>
-          <p>
-            Memora does not operate account, analytics, advertising, or tracking
-            servers. The app contacts service providers only when needed for a
-            feature you use. Specifically:
-          </p>
-          <ul>
-            <li>No user accounts or registration required</li>
-            <li>No analytics or tracking</li>
-            <li>No advertising</li>
-            <li>No sale of personal data</li>
-          </ul>
+            <h3>On-device AI and Photo Analysis</h3>
+            <p>
+              When creating a Trip Book, Memora may use Apple Intelligence and
+              Apple Vision directly on your device to analyze photo composition
+              and organize the scrapbook layout. Photos, captions, prompts, and
+              generated results are not sent to Memora servers or third-party AI
+              services and are not used for model training. A non-AI layout is
+              used when Apple Intelligence is unavailable.
+            </p>
 
-          <h3>Data Stored on Your Device</h3>
-          <p>
-            The app stores the following data in its encrypted local database:
-          </p>
-          <ul>
-            <li>Trip memories (titles, dates, locations, notes, ratings)</li>
-            <li>Photos you attach to memories</li>
-            <li>Planned trips</li>
-            <li>App preferences and settings</li>
-          </ul>
+            <h3>Data Collection</h3>
+            <p>
+              Memora does not operate account, analytics, advertising, or
+              tracking servers. The app contacts service providers only when
+              needed for a feature you use. Specifically:
+            </p>
+            <ul>
+              <li>No user accounts or registration required</li>
+              <li>No analytics or tracking</li>
+              <li>No advertising</li>
+              <li>No sale of personal data</li>
+            </ul>
 
-          <h3>iCloud Backup</h3>
-          <p>
-            If you enable iCloud Backup, Memora stores a recovery copy of your
-            memories, plans, photos, ratings, notes, activity summaries, and
-            settings in the app's private iCloud container. This copy is
-            controlled through your Apple ID and is not available to Cerberus
-            Software Technologies. You can disable backup, keep the existing
-            copy, or delete the iCloud backup from Memora Settings.
-          </p>
+            <h3>Data Stored on Your Device</h3>
+            <p>
+              The app stores the following data in its encrypted local database:
+            </p>
+            <ul>
+              <li>Trip memories (titles, dates, locations, notes, ratings)</li>
+              <li>Photos you attach to memories</li>
+              <li>Planned trips</li>
+              <li>App preferences and settings</li>
+            </ul>
 
-          <h3>Calendar Data</h3>
-          <p>
-            Calendar access is optional and is requested only after you choose
-            <strong>Scan My Calendar</strong>. Memora reads event titles, dates,
-            locations, and notes to identify possible trips. Scanning and
-            matching happen on your device. Scanned events are not sent to our
-            servers, Memora never changes your calendar, and Memora does not
-            access or change reminders.
-          </p>
-          <p>
-            No suggestions are selected automatically. Only trips you explicitly
-            choose are saved to Memora. Saved trip details may be included in
-            your private iCloud backup when backup is enabled.
-          </p>
+            <h3>iCloud Backup</h3>
+            <p>
+              If you enable iCloud Backup, Memora stores a recovery copy of your
+              memories, plans, photos, ratings, notes, activity summaries, and
+              settings in the app's private iCloud container. This copy is
+              controlled through your Apple ID and is not available to Cerberus
+              Software Technologies. You can disable backup, keep the existing
+              copy, or delete the iCloud backup from Memora Settings.
+            </p>
 
-          <h3>Apple Health and Activity</h3>
-          <p>
-            With your permission, Memora reads step counts and cycling distance
-            for your trip dates. Memora does not write to Apple Health. Activity
-            summaries saved with a memory remain local unless you enable iCloud
-            Backup or explicitly export or share them.
-          </p>
+            <h3>Calendar Data</h3>
+            <p>
+              Calendar access is optional and is requested only after you choose
+              <strong>Scan My Calendar</strong>. Memora reads event titles,
+              dates, locations, and notes to identify possible trips. Scanning
+              and matching happen on your device. Scanned events are not sent to
+              our servers, Memora never changes your calendar, and Memora does
+              not access or change reminders.
+            </p>
+            <p>
+              No suggestions are selected automatically. Only trips you
+              explicitly choose are saved to Memora. Saved trip details may be
+              included in your private iCloud backup when backup is enabled.
+            </p>
 
-          <h3>Location Data</h3>
-          <p>The app may request location permission to:</p>
-          <ul>
-            <li>Tag your current location when creating a memory</li>
-            <li>
-              Detect arrival at planned trip destinations using region
-              monitoring
-            </li>
-          </ul>
-          <p>
-            Saved memory and plan locations are stored in the encrypted local
-            database and may be included in your private iCloud backup. Map,
-            geocoding, and weather providers may receive the coordinates or
-            search text needed to answer a request.
-          </p>
+            <h3>Apple Health and Activity</h3>
+            <p>
+              With your permission, Memora reads step counts and cycling
+              distance for your trip dates. Memora does not write to Apple
+              Health. Activity summaries saved with a memory remain local unless
+              you enable iCloud Backup or explicitly export or share them.
+            </p>
 
-          <h3>Third-Party Services</h3>
-          <ul>
-            <li>
-              <strong>Google Maps / Places API</strong> — Used for location
-              search and map display. Subject to
-              <a href="https://policies.google.com/privacy"
-                >Google's Privacy Policy</a
+            <h3>Location Data</h3>
+            <p>The app may request location permission to:</p>
+            <ul>
+              <li>Tag your current location when creating a memory</li>
+              <li>
+                Detect arrival at planned trip destinations using region
+                monitoring
+              </li>
+            </ul>
+            <p>
+              Saved memory and plan locations are stored in the encrypted local
+              database and may be included in your private iCloud backup. Map,
+              geocoding, and weather providers may receive the coordinates or
+              search text needed to answer a request.
+            </p>
+
+            <h3>Third-Party Services</h3>
+            <ul>
+              <li>
+                <strong>Google Maps / Places API</strong> — Used for location
+                search and map display. Subject to
+                <a href="https://policies.google.com/privacy"
+                  >Google's Privacy Policy</a
+                >.
+              </li>
+              <li>
+                <strong>Open-Meteo</strong> — Receives the coordinates and dates
+                needed to return weather information.
+              </li>
+              <li>
+                <strong>Apple iCloud</strong> — Stores an optional recovery copy
+                in the app's private iCloud container when you enable iCloud
+                Backup. Subject to
+                <a href="https://www.apple.com/privacy/"
+                  >Apple's Privacy Policy</a
+                >.
+              </li>
+              <li>
+                <strong>Apple StoreKit / Google Play Billing</strong> — Used for
+                in-app purchases. Subject to
+                <a href="https://www.apple.com/privacy/">Apple's</a> and
+                <a href="https://policies.google.com/privacy">Google's</a>
+                privacy policies.
+              </li>
+            </ul>
+
+            <h3>Data Deletion</h3>
+            <p>
+              Deleting the app removes its local data. If iCloud Backup is
+              enabled, the private recovery copy can remain after uninstalling
+              so you can restore it later. To remove it before uninstalling, go
+              to Memora Settings, turn off iCloud Backup, and choose
+              <strong>Delete iCloud Backup</strong>. You can also manage stored
+              app data through your Apple iCloud storage controls.
+            </p>
+
+            <h3>Children's Privacy</h3>
+            <p>
+              We do not knowingly collect data from children under 13. The app
+              does not require any personal information.
+            </p>
+
+            <h3>Changes to This Policy</h3>
+            <p>
+              We may update this policy from time to time. Changes will be
+              posted on this page with an updated date.
+            </p>
+          </div>
+
+          <div
+            class="privacy-policy"
+            id="privacy-policy-a-la-mesa"
+            role="tabpanel"
+            aria-labelledby="privacy-tab-a-la-mesa"
+            hidden
+          >
+            <div class="privacy-policy-header">
+              <h3>A La Mesa Privacy Policy</h3>
+              <p class="policy-date">
+                <strong>Last updated:</strong> September 12, 2026
+              </p>
+            </div>
+
+            <h3>Overview</h3>
+            <p>
+              A La Mesa is a local-first family card game. You do not need a
+              permanent player account to play. The device hosting a game keeps
+              the authoritative game state, while connected players receive only
+              the information needed for their view of that game.
+            </p>
+
+            <h3>Data Collection</h3>
+            <p>
+              Cerberus Software Technologies does not operate advertising,
+              analytics, or tracking systems for A La Mesa. We do not sell
+              personal data. The app and its connection providers process only
+              the information needed to run the features you choose to use.
+            </p>
+            <ul>
+              <li>No permanent player accounts or registration</li>
+              <li>No advertising or cross-app tracking</li>
+              <li>No sale of personal data</li>
+              <li>No cloud storage of decks, hands, scores, or saved games</li>
+            </ul>
+
+            <h3>Data Stored on Your Device</h3>
+            <p>
+              A La Mesa may store player display names, game preferences, room
+              and player identifiers, private rejoin credentials, and saved game
+              information on the devices participating in a game. The host
+              device stores the complete game state, including the deck, hands,
+              turns, and scores. Other players receive privacy-filtered game
+              views, so a player's private hand is not sent to unrelated
+              players.
+            </p>
+
+            <h3>Multiplayer Connections</h3>
+            <p>
+              Multiplayer gameplay uses encrypted WebRTC connections between
+              devices. A temporary signaling service processes room codes,
+              session membership, connection negotiation data such as SDP and
+              ICE candidates, and short-lived relay credentials so players can
+              connect. This signaling service does not store the gameplay state,
+              deck, hands, scores, or saved games.
+            </p>
+            <p>
+              When a direct peer connection is not possible, an encrypted
+              connection may be relayed through a TURN service. As with other
+              internet services, network providers may process IP addresses and
+              technical connection data required to deliver traffic. Temporary
+              room and connection information expires after the session.
+            </p>
+
+            <h3>Player Photos and Camera</h3>
+            <p>
+              Adding a player photo is optional. If you choose a photo or use
+              the camera, the app crops and compresses the image for use as an
+              avatar. The avatar is sent to the host and participating players
+              for that game and is not uploaded to a central A La Mesa photo
+              library. You can use initials instead of a photo. Camera access
+              may also be used when you choose to scan a game invitation.
+            </p>
+
+            <h3>Saved Games and Retention</h3>
+            <p>
+              Saved games remain on the applicable device until they are removed
+              by the user, the app's local data is cleared, or the app is
+              uninstalled. A La Mesa does not currently synchronize saved games
+              through a cloud account. Session-scoped connection information and
+              shared avatars are intended to last only as long as needed for the
+              multiplayer session.
+            </p>
+
+            <h3>Permissions</h3>
+            <p>
+              A La Mesa requests camera or photo-library access only when you
+              choose a feature that needs it. Local network and internet access
+              may be used to discover, connect, and communicate with players in
+              a multiplayer game. You can manage these permissions in your
+              device settings.
+            </p>
+
+            <h3>Third-Party Services</h3>
+            <ul>
+              <li>
+                <strong>Cloudflare</strong> — Provides temporary signaling and
+                connection infrastructure. Subject to
+                <a href="https://www.cloudflare.com/privacypolicy/"
+                  >Cloudflare's Privacy Policy</a
+                >.
+              </li>
+              <li>
+                <strong>Apple App Store / Google Play</strong> — Distribute the
+                app and process platform services. Subject to
+                <a href="https://www.apple.com/privacy/">Apple's</a> and
+                <a href="https://policies.google.com/privacy">Google's</a>
+                privacy policies.
+              </li>
+            </ul>
+
+            <h3>Children's Privacy</h3>
+            <p>
+              A La Mesa is designed for family play and does not require a child
+              to create an account. We do not knowingly collect personal
+              information from children under 13 through our own servers.
+              Parents and guardians should supervise children's use of optional
+              player names and photos.
+            </p>
+
+            <h3>Security</h3>
+            <p>
+              We use local protected storage, privacy-filtered gameplay views,
+              encrypted WebRTC transport, and short-lived connection credentials
+              to limit access to game information. No security method is
+              perfect, so players should share room invitations only with people
+              they trust.
+            </p>
+
+            <h3>Your Choices and Data Deletion</h3>
+            <p>
+              You can decline optional photo and camera permissions and use
+              initials instead. You can remove saved game data using available
+              in-app controls, clear the app's local data through your device,
+              or uninstall the app. Uninstalling removes A La Mesa's locally
+              stored data from that device.
+            </p>
+
+            <h3>Changes to This Policy</h3>
+            <p>
+              We may update this policy as A La Mesa evolves. Changes will be
+              posted on this page with an updated date.
+            </p>
+
+            <h3>Contact Us</h3>
+            <p>
+              Questions about this policy can be sent to
+              <a href="mailto:cerberus.software.technologies@gmail.com"
+                >cerberus.software.technologies@gmail.com</a
               >.
-            </li>
-            <li>
-              <strong>Open-Meteo</strong> — Receives the coordinates and dates
-              needed to return weather information.
-            </li>
-            <li>
-              <strong>Apple iCloud</strong> — Stores an optional recovery copy
-              in the app's private iCloud container when you enable iCloud
-              Backup. Subject to
-              <a href="https://www.apple.com/privacy/">Apple's Privacy Policy</a
-              >.
-            </li>
-            <li>
-              <strong>Apple StoreKit / Google Play Billing</strong> — Used for
-              in-app purchases. Subject to
-              <a href="https://www.apple.com/privacy/">Apple's</a> and
-              <a href="https://policies.google.com/privacy">Google's</a> privacy
-              policies.
-            </li>
-          </ul>
-
-          <h3>Data Deletion</h3>
-          <p>
-            Deleting the app removes its local data. If iCloud Backup is
-            enabled, the private recovery copy can remain after uninstalling so
-            you can restore it later. To remove it before uninstalling, go to
-            Memora Settings, turn off iCloud Backup, and choose
-            <strong>Delete iCloud Backup</strong>. You can also manage stored
-            app data through your Apple iCloud storage controls.
-          </p>
-
-          <h3>Children's Privacy</h3>
-          <p>
-            We do not knowingly collect data from children under 13. The app
-            does not require any personal information.
-          </p>
-
-          <h3>Changes to This Policy</h3>
-          <p>
-            We may update this policy from time to time. Changes will be posted
-            on this page with an updated date.
-          </p>
+            </p>
+          </div>
         </section>
 
         <section class="info-card anchor-section" id="terms">
@@ -1492,5 +1809,61 @@
       <p>Capture memories. Cherish every adventure.</p>
       <p>© 2026 Cerberus Software Technologies. All rights reserved.</p>
     </footer>
+    <script>
+      (() => {
+        const tabs = Array.from(document.querySelectorAll("[data-policy]"));
+        const panels = {
+          memora: document.getElementById("privacy-policy-memora"),
+          "a-la-mesa": document.getElementById("privacy-policy-a-la-mesa"),
+        };
+
+        const normalizePolicy = (value) =>
+          ["a-la-mesa", "alamesa", "a_la_mesa"].includes(
+            String(value || "").toLowerCase(),
+          )
+            ? "a-la-mesa"
+            : "memora";
+
+        const selectPolicy = (policy, updateUrl = true) => {
+          const selected = normalizePolicy(policy);
+
+          tabs.forEach((tab) => {
+            const active = tab.dataset.policy === selected;
+            tab.setAttribute("aria-selected", String(active));
+            tab.tabIndex = active ? 0 : -1;
+          });
+
+          Object.entries(panels).forEach(([name, panel]) => {
+            if (panel) panel.hidden = name !== selected;
+          });
+
+          if (updateUrl) {
+            const url = new URL(window.location.href);
+            if (selected === "memora") {
+              url.searchParams.delete("app");
+            } else {
+              url.searchParams.set("app", selected);
+            }
+            url.hash = "privacy";
+            window.history.replaceState({}, "", url);
+          }
+        };
+
+        tabs.forEach((tab, index) => {
+          tab.addEventListener("click", () => selectPolicy(tab.dataset.policy));
+          tab.addEventListener("keydown", (event) => {
+            if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+            event.preventDefault();
+            const direction = event.key === "ArrowRight" ? 1 : -1;
+            const next = tabs[(index + direction + tabs.length) % tabs.length];
+            selectPolicy(next.dataset.policy);
+            next.focus();
+          });
+        });
+
+        const params = new URLSearchParams(window.location.search);
+        selectPolicy(params.get("app"), false);
+      })();
+    </script>
   </body>
 </html>
